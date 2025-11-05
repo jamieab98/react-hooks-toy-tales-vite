@@ -19,19 +19,8 @@ function ToyForm() {
         "likes": 0
       })
     })
-      .then(r => {
-        if (!r.ok) {
-          console.log("Fetching didn't fetch")
-        }
-        return r.json();
-      })
-      .then(updatedToysData => {
-        console.log(updatedToysData);
-      })
+      .then(r => r.json())
       .catch(error => {console.log(error)})
-    console.log("submit button pushed");
-    console.log(newName);
-    console.log(newImage);
   }
 
   return (
