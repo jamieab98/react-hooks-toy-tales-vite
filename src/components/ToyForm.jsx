@@ -1,11 +1,16 @@
 import React from "react";
-
+import { useState } from "react";
 
 function ToyForm() {
+
+  const [newName, setNewName] = useState("")
+  const [newImage, setNewImage] = useState("")
 
   function handleSubmit(e){
     e.preventDefault();
     console.log("submit button pushed")
+    console.log(newName);
+    console.log(newImage);
   }
 
   return (
@@ -17,6 +22,7 @@ function ToyForm() {
           name="name"
           placeholder="Enter a toy's name..."
           className="input-text"
+          onChange={(e) => setNewName(e.target.value)}
         />
         <br />
         <input
@@ -24,6 +30,7 @@ function ToyForm() {
           name="image"
           placeholder="Enter a toy's image URL..."
           className="input-text"
+          onChange={(e) => setNewImage(e.target.value)}
         />
         <br />
         <input
