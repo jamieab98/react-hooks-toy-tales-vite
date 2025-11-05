@@ -8,7 +8,28 @@ function ToyForm() {
 
   function handleSubmit(e){
     e.preventDefault();
-    console.log("submit button pushed")
+    fetch("http://localhost:3001/toys", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "name": newName,
+        "image": newImage,
+        "likes": 0
+      })
+    })
+      .then(r => {
+        if (!r.ok) {
+          console.log("Fetching didn't fetch")
+        }
+        return r.json();
+      })
+      .then(updatedToysData => {
+        console.log(updatedToysData);
+      })
+      .catch(error => {console.log(error)})
+    console.log("submit button pushed");
     console.log(newName);
     console.log(newImage);
   }
