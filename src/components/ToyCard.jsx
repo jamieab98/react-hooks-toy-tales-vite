@@ -5,11 +5,11 @@ function ToyCard({toyData}) {
     <div className="card" data-testid="toy-card">
       <h2>{toyData.name}</h2>
       <img
-        src={"" /* Toy's Image */}
-        alt={"" /* Toy's Name */}
+        src={toyData.image}
+        alt={`Image of ${toyData.name}`}
         className="toy-avatar"
       />
-      <p>{"" /* Toy's Likes */} Likes </p>
+      <p>{toyData.likes} Likes </p>
       <button className="like-btn">Like {"<3"}</button>
       <button className="del-btn">Donate to GoodWill</button>
     </div>

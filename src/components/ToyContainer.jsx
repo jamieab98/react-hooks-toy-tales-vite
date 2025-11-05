@@ -15,7 +15,7 @@ function ToyContainer() {
   return (
     <div id="toy-collection">
       {toysData.map((toyData) => (
-        <ToyCard toyData={toyData}/>
+        <ToyCard key={toyData.id} toyData={toyData}/>
       ) )}
     </div>
   );
