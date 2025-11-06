@@ -1,6 +1,10 @@
 import React from "react";
 
-function ToyCard({toyData, handleDonate}) {
+function ToyCard({toyData}) {
+
+  function handleDonate() {
+    console.log(`Donating ${toyData.name}`)
+  }
 
   return (
     <div className="card" data-testid="toy-card">
