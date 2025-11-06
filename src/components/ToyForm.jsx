@@ -19,7 +19,7 @@ function ToyForm() {
         "likes": 0
       })
     })
-      .then(response => response.json())
+      .then(r => r.json())
       .catch(error => {console.log(error)})
   }
 
