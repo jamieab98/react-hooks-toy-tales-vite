@@ -3,7 +3,7 @@ import React from "react";
 function ToyCard({toyData, setToysData}) {
 
   function handleDonate() {
-    fetch(`http://localhost:3001/toys${toyData.id}`, {
+    fetch(`http://localhost:3001/toys/${toyData.id}`, {
       method: "DELETE",
     })
     .then((r) => {
