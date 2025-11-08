@@ -1,9 +1,15 @@
 import React from "react";
 
-function ToyCard({toyData}) {
+function ToyCard({toyData, setToysData}) {
 
   function handleDonate() {
-    console.log(`Donating ${toyData.name}`)
+    fetch(`http://localhost:3001/toys${toyData.id}`, {
+      method: "DELETE",
+    })
+    .then((r) => {
+      console.log(`Deleting ${toyData.name}`)
+      setToysData(prev => prev.filter(toy => toy.id !== toyData.id))
+    })
   }
 
   return (

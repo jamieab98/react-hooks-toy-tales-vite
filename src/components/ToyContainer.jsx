@@ -12,10 +12,11 @@ function ToyContainer() {
     .then((data) => setToysData(data))
   }, [])
 
+
   return (
     <div id="toy-collection">
       {toysData.map((toyData) => (
-        <ToyCard key={toyData.id} toyData={toyData}/>
+        <ToyCard key={toyData.id} toyData={toyData} setToysData={setToysData}/>
       ) )}
     </div>
   );
