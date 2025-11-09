@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function ToyForm() {
+function ToyForm({setToysData}) {
 
   const [newName, setNewName] = useState("")
   const [newImage, setNewImage] = useState("")
@@ -19,7 +19,10 @@ function ToyForm() {
         "likes": 0
       })
     })
-      .then(r => r.json())
+      .then(response => response.json())
+      .then((newToy) => {
+        setToysData((prev) => [...prev, newToy])
+      })
       .catch(error => {console.log(error)})
   }
 

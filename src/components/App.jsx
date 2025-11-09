@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
 import Header from "./Header";
 import ToyForm from "./ToyForm";
 import ToyContainer from "./ToyContainer";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
+  const [toysData, setToysData] = useState([]);
 
   function handleClick() {
     setShowForm((showForm) => !showForm);
@@ -14,11 +14,11 @@ function App() {
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm setToysData={setToysData}/> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer />
+      <ToyContainer toysData={toysData}/>
     </>
   );
 }

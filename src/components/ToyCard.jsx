@@ -23,9 +23,7 @@ function ToyCard({toyData, setToysData}) {
       body: JSON.stringify({likes: newToyLikes})
     })
     .then((response => response.json()))
-    .then((updatedData) => {
-      console.log(updatedData)
-    })
+    .then((updatedData) => {})
   }
 
   return (
