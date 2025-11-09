@@ -1,14 +1,30 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 function ToyCard({toyData, setToysData}) {
+
+  const [toyLikes, setToyLikes] = useState(toyData.likes)
 
   function handleDonate() {
     fetch(`http://localhost:3001/toys/${toyData.id}`, {
       method: "DELETE",
     })
     .then((r) => {
-      console.log(`Deleting ${toyData.name}`)
       setToysData(prev => prev.filter(toy => toy.id !== toyData.id))
+    })
+  }
+  
+  function handleLike() {
+    const newToyLikes = toyLikes + 1;
+    setToyLikes(newToyLikes);
+    fetch(`http://localhost:3001/toys/${toyData.id}`, {
+      method: "PATCH", 
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({likes: newToyLikes})
+    })
+    .then((response => response.json()))
+    .then((updatedData) => {
+      console.log(updatedData)
     })
   }
 
@@ -20,8 +36,8 @@ function ToyCard({toyData, setToysData}) {
         alt={`Image of ${toyData.name}`}
         className="toy-avatar"
       />
-      <p>{toyData.likes} Likes </p>
-      <button className="like-btn">Like {"<3"}</button>
+      <p>{toyLikes} Likes </p>
+      <button className="like-btn" onClick={handleLike}>Like {"<3"}</button>
       <button className="del-btn" onClick={handleDonate}>Donate to GoodWill</button>
     </div>
   );
