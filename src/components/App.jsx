@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Header />
-      {showForm ? <ToyForm setToysData={setToysData}/> : null}
+      {showForm ? <ToyForm setToysData={setToysData} toysData={toysData}/> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>

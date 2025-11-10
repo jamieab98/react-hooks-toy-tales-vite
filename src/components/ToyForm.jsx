@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-function ToyForm({setToysData}) {
+function ToyForm({setToysData, toysData}) {
 
   const [newName, setNewName] = useState("")
   const [newImage, setNewImage] = useState("")
+
+  const newID = toysData.length + 1;
 
   function handleSubmit(e){
     e.preventDefault();
@@ -14,6 +16,7 @@ function ToyForm({setToysData}) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        "id": newID,
         "name": newName,
         "image": newImage,
         "likes": 0
