@@ -2,9 +2,7 @@ import React from "react";
 import ToyCard from "./ToyCard";
 import { useEffect, useState } from "react";
 
-function ToyContainer() {
-
-  const [toysData, setToysData] = useState([]);
+function ToyContainer({toysData, setToysData}) {  
 
   useEffect(() => {
     fetch('http://localhost:3001/toys')
